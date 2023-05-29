@@ -1,0 +1,136 @@
+<!-- Section: Design Block -->
+<section class="text-left" style="width :700px ">
+  <!-- Background image -->
+  <div class="p-5 bg-image">
+  </div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div>
+      <div class="card-body py-5 px-md-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8" >
+            <h2 class="fw-bold mb-5">Sign up now</h2>
+            <form [formGroup]="formulaire" (ngSubmit)="check()">
+              <div class="form-group">
+                <label for="exampleInputName">FirstName</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputName"
+                  aria-describedby="NameHelp"
+                  placeholder="Enter your name please"
+                  formControlName="firstName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputLastName">LastName</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputLastName"
+                  placeholder="Enter your last name please"
+                  formControlName="lastName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputrole">Role</label>
+                <select class="form-select" aria-label="Default select example" formControlName="role">
+                  <option value="1">Admin</option>
+                  <option value="2">User</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputJobTitle">Job title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputJobTitle"
+                  placeholder="Enter your job title please"
+                  formControlName="post_title"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPhoneNumber">Phone Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPhoneNumber"
+                  placeholder="Enter your Phone Number please"
+                  formControlName="phone_num"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputHiringDate">Hiring Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="exampleInputHiringDate"
+                  placeholder="Enter your hiring date please"
+                  formControlName="hiring_date"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputemail">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  id="exampleInputemail"
+                  placeholder="Enter your email please"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputpasswd">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputpasswd"
+                  placeholder="Enter your password please"
+                  name="password"
+                  formControlName="password"
+                />
+              </div>
+
+              <h3>Entrez les coordonnées de votre voiture</h3>
+
+              <div class="form-group">
+                <label for="exampleInputMatricule">Matricule</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="Matricule"
+                  id="exampleInputMatricule"
+                  placeholder="Enter your matricule please"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputType">Type</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="Type"
+                  id="exampleInputType"
+                  placeholder="Enter your type please"
+                />
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Submit</button>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"
+                  routerLink="">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- Section: Design Block -->

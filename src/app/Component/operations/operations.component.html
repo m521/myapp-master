@@ -1,0 +1,31 @@
+<button class="btn btn-primary" type="submit" (click)="getOperations()">Affecter les Places</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Place_ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let personne of UserAssignResponse">
+        <th scope="row">{{ personne.id }}</th>
+        <td>{{ personne.firstName }}</td>
+        <td>{{ personne.placeparkings.id }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <table>
+    <tr>
+      <td>
+        UserID
+      </td>
+      <td>
+        PlaceID
+      </td>
+    </tr>
+    <td><input [(ngModel)]="iduser" class="form-control" type="text"></td>
+    <td><input  [(ngModel)]="idPlace" class="form-control" type="text"></td>
+    <td><button class="btn btn-outline-success" (click)="assign()" >Attribuer une place</button></td>
+  </table>

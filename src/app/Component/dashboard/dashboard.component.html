@@ -1,0 +1,51 @@
+<input type="checkbox" id="menu-toggle">
+<div class="sidebar">
+    <div class="side-header">
+        <h3>M<span>odern</span></h3>
+    </div>
+
+    <div class="side-content">
+        <div class="profile">
+            <div class="profile-img bg-img" style="background-image: url(../../../assets/user_profile_picture.png)"></div>
+            <h4></h4>
+            <small>{{email}}</small>
+        </div>
+
+        <div class="side-menu">
+            <ul>
+                <li class="nav-item"> <a class="nav-link" routerLink="/statistics" routerLinkActive="active"> <i class="bi bi-bar-chart"></i> Statistics </a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/operations" routerLinkActive="active"*ngIf="adminCheck"> <i class="bi bi-chat"></i> Operations </a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/parking" routerLinkActive="active"> <i class="bi bi-bookmarks"></i> Parking </a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/user" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Users Management </a> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+
+    <header>
+        <div class="header-content">
+            <label for="menu-toggle">
+                <span class="las la-bars"></span>
+            </label>
+
+            <div class="header-menu">
+                <div class="user">
+                    <div class="bg-img" style="background-image: url(../../../assets/user_profile_picture.png)"></div>
+                    <span>{{email}}</span>/
+                    <span style="cursor: pointer;" (click)="logOut()">Logout</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="page-content">
+          <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

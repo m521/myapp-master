@@ -1,0 +1,24 @@
+.gradient-custom-2 {
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    }
+    
+    .bg-image{
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+    .left {
+        width: 50%;
+        background-color: #f2f2f2;
+    }
+    .right {
+        width: 50%;
+        background-color: #ddd;
+    }

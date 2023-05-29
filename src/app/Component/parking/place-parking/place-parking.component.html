@@ -1,0 +1,143 @@
+<mat-toolbar color="primary">
+  Parkings View
+</mat-toolbar>
+
+<div class="content" *ngIf="adminCheck">
+  <div class="mx-n1"  class="text-left">
+    <a
+      data-toggle="modal"
+      data-target="#exampleModalCenter"
+      class="btn d-inline-flex btn-sm mx-1">
+      <span class="badge rounded-pill bg-info text-dark"> <i class="bi bi-plus"></i> </span> <span>Create</span>
+    </a>
+  </div>
+</div>
+<div class="grid">
+  <ng-container *ngFor="let parking of placeParkings">
+  <div class="card" style="width: 18rem;">
+    <img routerLink="../placeparking/{{parking.id}}" mat-card-image src="">
+    <div class="card-body">
+      <h5 class="card-title">{{parking.libelle}}</h5>
+      <p>{{parking.id}}</p>
+      <p>{{parking.status}}</p>
+    </div>
+    <div class="card-body" *ngIf="adminCheck">
+        <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
+              data-toggle="modal"
+              data-target="#modifyParking"
+              (click)="openModel(parking)">
+                <span class="pe-2"> <i class="bi bi-pencil"></i> </span> <span>Edit</span>
+              </button>
+              <button class="btn d-inline-flex btn-sm btn-danger border-base mx-1 "type="button"
+              (click)="deletePlaceParking(parking.id)">
+              <span class="pe-2"> <i class="bi bi-x-circle-fill"></i> </span> <span>Delete</span>
+              </button>
+    </div>
+  </div>
+</ng-container>
+</div>
+<div
+class="modal fade"
+id="exampleModalCenter"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Place Parking</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formulaire" (ngSubmit)="check()">
+        <div class="form-group">
+          <label for="exampleInputJobTitle">Status</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputLibelle"
+            placeholder="Entrer le status de votre nouveau place Parking "
+            formControlName="status"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit"
+          class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<div
+  class="modal fade"
+  id="ModifyplaceParking"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="placeParking"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">modify Place Parking</h5>
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="modifyPlaceParkings(f)">
+          <div class="form-group">
+            <label for="exampleInputName">Status</label>
+            <select name="status" id="status" [(ngModel)]="place.status">
+              <option value="Active">Active</option>
+              <option value="NotActive">NotActive</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
