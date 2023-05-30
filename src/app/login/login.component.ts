@@ -28,7 +28,7 @@ role !: any;
         const role = decodedToken.role;
         localStorage.setItem('role',role);
         localStorage.setItem('email',decodedToken.sub)
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
         // Redirect to dashboard or other authenticated pages
       },
       (error) => {

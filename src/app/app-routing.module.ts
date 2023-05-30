@@ -12,7 +12,7 @@ import { ReservationsComponent } from './Component/reservations/reservations.com
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationFormComponent },
-  { path: '' , component: DashboardComponent ,
+  { path: 'dashboard' , component: DashboardComponent ,
   children : [
     {
       path: '',
@@ -26,7 +26,11 @@ const routes: Routes = [
     {path: 'operations' , component: OperationsComponent},
     {path: 'reservations' , component : ReservationsComponent},
   ]},
-
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  }
 
 ];
 @NgModule({
