@@ -49,6 +49,12 @@
   padding: 10%;
   margin-top: 10%;
 }
+.vertical-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
 .btnRegister{
   float: right;
   margin-top: 10%;

@@ -14,14 +14,10 @@ const API_URL_VOITURE ="http://localhost:8385/SpringMvc/";
 
 export class UserServiceService {
 
-  constructor(private Http:HttpClient) {
-
-  }
+  constructor(private Http:HttpClient) {}
 
   create(user:any): Observable<any>{
-
     return this.Http.post(API_URL, user);
-
   }
 
 

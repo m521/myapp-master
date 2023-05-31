@@ -10,9 +10,10 @@ import { UserServiceService } from 'src/app/Service/user.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
+
+
   fieldTextType: boolean = true;
   ngOnInit(): void {
-    this.getUsers();
   }
 
   toggleFieldTextType() {
@@ -50,7 +51,10 @@ export class UserComponent {
 
   ListUsers!: any[];
 
-  constructor(private service: UserServiceService) {}
+  constructor(private service: UserServiceService) {
+    this.getUsers();
+
+  }
 
   formulaire: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -88,7 +92,6 @@ export class UserComponent {
 
   openModel(user: any) {
     this.fieldTextType = !this.fieldTextType;
-
     this.userModify = {
       id: user.id,
 
@@ -109,13 +112,12 @@ export class UserComponent {
       role : user.role,
 
       voitures: {
-        matricule: user.voitures.matricule,
+        matricule: user.voitures?.matricule,
 
-        type: user.voitures.type,
+        type: user.voitures?.type,
       },
     };
-
-    console.log(user);
+    console.log(this.userModify);
   }
 
   check() {

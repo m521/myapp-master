@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { RegistrationFormService } from '../Service/registration-form.service';
+import { UserServiceService } from '../Service/user.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -40,7 +41,7 @@ export class RegistrationFormComponent {
 
   ListUsers!: any[];
 
-  constructor(private service: RegistrationFormService) {}
+  constructor(private service: UserServiceService) {}
 
   formulaire: FormGroup = new FormGroup({
 
@@ -77,7 +78,6 @@ export class RegistrationFormComponent {
     type: new FormControl('', [Validators.required]),
   });
   check() {
-    console.log(this.formulaire.get('email')?.value);
 
     const user = {
       firstName: this.formulaire.get('firstName')?.value,
@@ -104,16 +104,12 @@ export class RegistrationFormComponent {
     };
     console.log(user);
 
-    this.service.create(user).subscribe(
-      (res: any) => {
+    this.service.create(user).subscribe((res: any) => {
         this.userData = res;
-      },
-
-      (error: any) => {
+      },(error: any) => {
         console.log(error);
       }
     );
-
     console.log(user);
   }
   onSubmit(f: NgForm) {
