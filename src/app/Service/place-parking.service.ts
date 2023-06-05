@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PlaceParkingComponent } from '../Component/parking/place-parking/place-parking.component';
 const API_URL ="http://localhost:8385/SpringMvc/placeparkings/";
 
 @Injectable({
@@ -8,7 +9,7 @@ const API_URL ="http://localhost:8385/SpringMvc/placeparkings/";
 })
 export class PlaceParkingService {
 
-  private apiUrl = 'http://localhost:8380/SpringMvc/placeparkings/reserver-place';
+
 constructor(private Http : HttpClient) {
 
   }
@@ -43,8 +44,6 @@ constructor(private Http : HttpClient) {
 
   }
 
-  reserverPlace() {
-    return this.Http.post<any>(this.apiUrl, {});
-  }
+
 
 }

@@ -15,6 +15,7 @@ export class PlaceParkingComponent {
   place :any ={}
   placeReservee:any;
   adminCheck : boolean = false;
+  date!: string;
 
 constructor(private route: ActivatedRoute , private pPService : ParkingService,private placeParkingService : PlaceParkingService){
   localStorage.getItem('role') == "Admin" ? this.adminCheck = true : false;
@@ -50,16 +51,6 @@ modifyPlaceParkings(f :NgForm){
     console.log(res)
     this.ngOnInit()
   })
-}
-reserverPlace() {
-  this.placeParkingService.reserverPlace().subscribe(
-    data => {
-      this.placeReservee = data;
-    },
-    error => {
-      console.error(error);
-    }
-  );
 }
 
 

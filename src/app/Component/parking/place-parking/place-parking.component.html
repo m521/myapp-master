@@ -13,6 +13,7 @@
   </div>
 </div>
 <div class="grid">
+
   <ng-container *ngFor="let parking of placeParkings">
   <div class="card" style="width: 18rem;">
     <img routerLink="../placeparking/{{parking.id}}" mat-card-image src="">
@@ -21,6 +22,7 @@
       <p>{{parking.id}}</p>
       <p>{{parking.status}}</p>
     </div>
+
     <div class="card-body" *ngIf="adminCheck">
         <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
               data-toggle="modal"
