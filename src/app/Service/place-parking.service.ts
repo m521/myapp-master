@@ -1,15 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlaceParkingComponent } from '../Component/parking/place-parking/place-parking.component';
 const API_URL ="http://localhost:8385/SpringMvc/placeparkings/";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaceParkingService {
-
-
+  apiUrl ="http://localhost:8385/SpringMvc/placeparkings/";
 constructor(private Http : HttpClient) {
 
   }
@@ -44,6 +42,22 @@ constructor(private Http : HttpClient) {
 
   }
 
+  reserver(placeparking : number,data : any){
+    return this.Http.patch(API_URL +"reserver/"+ placeparking,data);
+  }
+  cancelReserver(placeparking : number){
+    return this.Http.patch(API_URL +"cancelReserver/"+ placeparking,null);
+  }
 
+  book(placeparking : number,dates : any){
+    return this.Http.patch(API_URL +"book/"+ placeparking,dates);
+  }
+  getReserved(){
+    return this.Http.get(API_URL +"getReserved");
+  }
+
+  getBooked(){
+    return this.Http.get(API_URL +"getBooked");
+  }
 
 }

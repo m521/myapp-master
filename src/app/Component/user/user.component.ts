@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { UserServiceService } from 'src/app/Service/user.service';
+
 
 @Component({
   selector: 'app-user',
@@ -10,6 +11,7 @@ import { UserServiceService } from 'src/app/Service/user.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
+
 
 
   fieldTextType: boolean = true;
@@ -22,7 +24,10 @@ export class UserComponent {
   userData: any = {};
 
   userModify: any = {
-    id: 0,
+
+    id : 0,
+
+    userId : 0 ,
 
     firstName: '',
 
@@ -51,10 +56,13 @@ export class UserComponent {
 
   ListUsers!: any[];
 
+
   constructor(private service: UserServiceService) {
     this.getUsers();
 
   }
+
+
 
   formulaire: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -163,18 +171,23 @@ export class UserComponent {
     });
   }
 
-  modifyUsers(formulaire: NgForm) {
-    this.service.modify(this.userModify).subscribe((res: any) => {
-      alert('updated sucess !');
-    });
-  }
-
   deleteUser(id: any) {
     this.service.delete(id).subscribe((res: any) => {
       alert(res);
     });
 
     this.getUsers();
+  }
+
+
+  modifyUsers(f:NgForm) {
+
+    this.service.modify(this.userModify).subscribe((res:any)=>{
+
+      alert('updated successfully');
+    }
+
+    );
   }
 
   onSubmit(f: NgForm) {

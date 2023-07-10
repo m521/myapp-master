@@ -8,10 +8,11 @@
       data-toggle="modal"
       data-target="#exampleModalCenter"
       class="btn d-inline-flex btn-sm mx-1">
-      <span class="badge rounded-pill bg-info text-dark"> <i class="bi bi-plus"></i> </span> <span>Create</span>
+      <span class="badge rounded-pill bg-info text-dark"> + </span> <span>Create</span>
     </a>
   </div>
 </div>
+
 <div class="grid">
 
   <ng-container *ngFor="let parking of placeParkings">
@@ -20,10 +21,16 @@
     <div class="card-body">
       <h5 class="card-title">{{parking.libelle}}</h5>
       <p>{{parking.id}}</p>
-      <p>{{parking.status}}</p>
+      <p>{{parking.status == true ? "Active" : "Not Active"}}</p>
     </div>
+    <button class="btn btn-danger" disabled="disabled" *ngIf="parking.user?.email == userEmail">Booked</button>
 
-    <div class="card-body" *ngIf="adminCheck">
+    <button  type="button"
+      class="btn btn-md btn-outline-primary"
+      data-toggle="modal"
+      data-target="#exampleModalReserver" (click)="placeParkingToedit = parking.id">Reserve</button>
+
+    <div class="card-body" *ngIf="adminCheck" background>
         <button class="btn d-inline-flex btn-sm btn-neutral border-base mx-1" type="button"
               data-toggle="modal"
               data-target="#modifyParking"
@@ -36,8 +43,67 @@
               </button>
     </div>
   </div>
-</ng-container>
+  </ng-container>
+
 </div>
+
+<div
+class="modal fade"
+id="exampleModalReserver"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalReserverTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">Reserver votre date</h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formul" (ngSubmit)="bookForm()">
+        <div class="form-group">
+          <label for="exampleInputReserver">Selectionnez la periode souhaitée</label>
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputStart"
+            placeholder="Entrer la date souhaitée "
+            formControlName="start_date"
+          />
+          <input
+            type="date"
+            class="form-control"
+            id="exampleInputEnd"
+            placeholder="Entrer date fin "
+            formControlName="end_date"
+          />
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+          class="btn btn-primary">Book now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
 <div
 class="modal fade"
 id="exampleModalCenter"
@@ -59,7 +125,7 @@ aria-hidden="true">
       </button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="formulaire" (ngSubmit)="check()">
+      <form [formGroup]="formulaire" (ngSubmit)="bookForm()">
         <div class="form-group">
           <label for="exampleInputJobTitle">Status</label>
           <input
@@ -86,6 +152,7 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
 <div
   class="modal fade"
   id="ModifyplaceParking"

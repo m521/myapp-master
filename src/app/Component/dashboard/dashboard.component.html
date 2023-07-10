@@ -1,14 +1,8 @@
-<input type="checkbox" id="menu-toggle">
-<div class="sidebar">
-    <div class="side-header">
-        <h3>M<span>odern</span></h3>
-    </div>
 
+<div class="sidebar">
     <div class="side-content">
         <div class="profile">
-            <div class="profile-img bg-img" style="background-image: url(../../../assets/user_profile_picture.png)"></div>
-            <h4></h4>
-            <small>{{email}}</small>
+            <div><img src="../../../assets/sopra.png" width=""></div>
         </div>
 
         <div class="side-menu">
@@ -17,6 +11,8 @@
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/operations" routerLinkActive="active"*ngIf="adminCheck"> <i class="bi bi-chat"></i> Operations </a> </li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/parking" routerLinkActive="active"> <i class="bi bi-bookmarks"></i> Parking </a> </li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/user" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Users Management </a> </li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard/reservations" routerLinkActive="active" *ngIf="adminCheck"> <i class="bi bi-people" ></i> Reservations </a> </li>
+                <li class="nav-item"><a class="nav-link" (click)="logOut()" routerLinkActive="active">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -32,18 +28,17 @@
 
             <div class="header-menu">
                 <div class="user">
+                  <h2>Welcome to dashboard</h2>
                     <div class="bg-img" style="background-image: url(../../../assets/user_profile_picture.png)"></div>
+
                     <span>{{email}}</span>/
                     <span style="cursor: pointer;" (click)="logOut()">Logout</span>
                 </div>
+
             </div>
         </div>
     </header>
-
     <main>
-        <div class="page-header">
-            <h1>Dashboard</h1>
-        </div>
         <div class="page-content">
           <router-outlet></router-outlet>
         </div>

@@ -14,6 +14,11 @@ export class DashboardComponent {
     localStorage.getItem('role') == "Admin" ? this.adminCheck = true : false;
     this.email = localStorage.getItem('email') as string;
     }
+    status = false;
+addToggle()
+{
+  this.status = !this.status;
+}
 
   logOut(){
     localStorage.clear();
